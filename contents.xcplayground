@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='raw'>
+    <pages>
+        <page name='Tricks'/>
+        <page name='Intro Notes'/>
+        <page name='Intro Examples'/>
+        <page name='Notes P01 Types'/>
+        <page name='Notes P02 Control Flow'/>
+        <page name='Notes P03 Storyboard'/>
+        <page name='Notes P04 Strings'/>
+        <page name='Notes P05 Functions'/>
+    </pages>
+</playground>
