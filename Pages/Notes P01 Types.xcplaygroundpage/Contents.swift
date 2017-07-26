@@ -39,3 +39,47 @@ double1 + double2           // Only the same types can be operated, known as Typ
 "-=" // Compound minus
 "*=" // Compound multiply
 "/=" // Compound division
+//:---
+//:## Class v Struct
+/*: 
+>After an assignment operation:\
+`Class` retains the reference in the future and understand the two instances as the same objects (like being the same instance)\
+i.e. A = 1 ; B = A ; B = 2 ; A = ???\
+Result: A = 2\
+`Struct` does not retain the assignment reference, so two instances are always separate instances\
+i.e. A = 1 ; B = A ; B = 2; A = ???\
+Result: A = 1
+*/
+//: ### Class
+class SomeClass {
+	var name: String
+	init(name: String) {
+		self.name = name
+	}
+}
+
+let aClass = SomeClass(name: "Bob")
+var bClass = aClass								// aClass and bClass now reference the same instance!
+bClass.name = "Sue"
+
+print(aClass.name)
+print(bClass.name)
+//Bob is now Sue, everywhere that Bob was ever referenced.
+
+//: ### Struct
+
+struct SomeStruct {
+	var name: String
+//	init(name: String) {						// initializer not necessary for struct
+//		self.name = name
+//	}
+}
+
+let aStruct = SomeStruct(name: "Bob")
+var bStruct = aStruct							// aStruct and bStruct are two structs with the same value!
+bStruct.name = "Sue"
+
+print(aStruct.name)
+print(bStruct.name)
+
+//So for representing a stateful complex entity, a class is awesome. But for values that are simply a measurement or bits of related data, a struct makes more sense so that you can easily copy them around and calculate with them or modify the values without fear of side effects.
