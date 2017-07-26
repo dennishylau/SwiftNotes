@@ -1,3 +1,5 @@
+import Foundation
+
 //:## Change Status Bar Color
 /*:
 ```
@@ -9,3 +11,5 @@ if condition {
 }
 ```
 */
+//:## Create Random Number
+let randomNum = arc4random_uniform(UInt32(1000))	// Foundation, arugment UInt32(NUM_UPPER_BOUND)
