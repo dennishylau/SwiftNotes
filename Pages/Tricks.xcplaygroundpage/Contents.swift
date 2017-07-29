@@ -5,6 +5,16 @@ import Foundation
 >viewDidLoad: only called when the view is initialized\
 viewWillAppear: called every time the view is visible to the user
 */
+//:## LaunchScreen Status Bar Sytle
+/*:
+info.plist > Status bar is initially hidden = true\
+Then to restore after launching: AppDelegate >
+```
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	UIApplication.shared.isStatusBarHidden = false
+}
+```
+*/
 //:## Change Status Bar Color On Condition
 /*:
 ```
