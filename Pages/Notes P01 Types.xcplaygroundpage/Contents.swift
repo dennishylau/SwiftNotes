@@ -5,9 +5,11 @@ let constant1 = 1
 var variable1 = 1
 variable1 = 2
 //:## Types
-let string1 = String()      // Declared using an initializer
-let string2: String = "ABC" // Declared using literal
-let string3: String         // Declared type without value
+//:> Instances created from initializers have default values
+let string1 = String.init()		// Declared using an initializer
+let string2 = String()			// Shorthand for the above
+let string3: String = "ABC"		// Declared using literal
+let string4: String				// Declared type without initialization
 
 let integer1 = Int()			// Int initializer
 var double1 = Double()			// Double initializer
