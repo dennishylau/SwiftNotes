@@ -16,17 +16,28 @@ var double1 = Double()			// Double initializer
 double1 = 1_000_000_000.99
 var decimal1: Decimal = 3.14	// Decimal type, extra precision over the Double (Float) type for tiny fractions, requires Foundation
 let bool1 = Bool()				// Bool initializer
-let char1: Character			// Characters must be defined
-var tuple1 = (a: 0, b: 0)		// Declaring a tuple
-tuple1.a = 1					// Assigning value for parameter a
-tuple1.1 = 2					// Assigning value at index 1 (first is 0)
-tuple1
+let char1: Character			// Characters
+
 struct Person {					// Declaring a struct
     let name: String
     var age: Int
     var education: [String]		// Declaring an array
 }
 var person1 = Person(name: "Dennis Lau", age: 22, education: ["DBS","CUHK"])
+
+var tuple1 = (a: 0, b: "abc")	// Declaring a tuple
+tuple1.a = 1					// Assigning value for parameter a
+tuple1.1 = "def"				// Assigning value at index 1 (first is 0)
+tuple1
+tuple1 = (2,"ghi")
+//tuple1 = (2.1,"abc")			// This returns a type error
+/*:
+>Tuple has many advantages over array\
+1\. Defined to use multiple specific types vs array [AnyObject] undefined types\
+2\. Defined number of arguments to take in\
+3\. Strongly typed, so only the right type of data goes into fitting index positions\
+4\. Named, so each parameter is distinguished
+*/
 //:## Convert Types & Type Safety
 let double2 = Double(integer1)  // Convert interger1 to a Double
 double1 + double2           // Only the same types can be operated, known as Type Safety

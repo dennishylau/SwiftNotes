@@ -33,3 +33,37 @@ struct MiscCounter2 {
 let counter3 = MiscCounter2(count: 0)	// Memberwise initializer
 print(counter3.count)
 //: ## Custom Initializer
+// If use custom initializer, swift cannot provide a memberwise initializer, so it must be manualy defined
+struct Temperature {
+	var celsius: Double
+	
+	init(celsius: Double) {
+		self.celsius = celsius		// self.celsius the variable = celsius the initializer argument
+									// self is necessary here becuase with the same property and parameter name, parameter takes precedence by default
+	}
+	
+	init(fahrenheit: Double) {
+		celsius = (fahrenheit - 32) / 9 * 5
+	}
+	
+	init(kelvin: Double) {
+		celsius = kelvin - 273.15
+	}
+}
+let currentTemperature = Temperature(celsius: 20)
+let currentTemperatureF = Temperature(fahrenheit: 77)
+let currentTemperatureK = Temperature(kelvin: 303.15)
+print(currentTemperature)
+print(currentTemperatureF)
+print(currentTemperatureK)
+//:## Instance Method
+struct Rectangle {
+	var width: Double
+	var height: Double
+	
+	func area() -> Double {
+		return width * height
+	}
+}
+let rect1 = Rectangle(width: 2, height: 3)
+rect1.area()
