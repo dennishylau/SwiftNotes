@@ -10,5 +10,6 @@
         <page name='Notes P04 Strings'/>
         <page name='Notes P05 Functions'/>
         <page name='Notes P06 Struct'/>
+        <page name='Notes P07 Class'/>
     </pages>
 </playground>
