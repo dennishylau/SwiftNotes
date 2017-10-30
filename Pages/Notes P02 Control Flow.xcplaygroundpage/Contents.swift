@@ -26,7 +26,7 @@ if !tempExceeds100 {                                             // If NOT tempE
     print("Water is boiling")
 }
 //:## Switch Statement
-var peopleTravelling = 3
+var peopleTravelling = 30
 switch peopleTravelling {                                        // A switch statement must be exhaustive, or include a default case
 case 1:
     print("This is gonna be one lonely trip.")
@@ -36,10 +36,10 @@ case 3:
     print("This is gonna be awkward...")
 case 4, 5, 6:
     print("OK this is gonna be noisy.")                          // Multiple conditions
-case 7...20:
+case 7...19:
     print("God I hate travelling in a large group.")             // Interval matching for number range
-case 21...30:
-    print("I can't breathe")
+case 20..<30:
+    print("I can't breathe")									// Ignores 30
 default:
     print("Just too many damn people!")                          // Default case
 }

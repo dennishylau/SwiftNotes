@@ -43,3 +43,4 @@ override func viewWillDisappear(_ animated: Bool) {
 */
 //:## Create Random Number
 let randomNum = arc4random_uniform(UInt32(1000))	// Foundation, arugment UInt32(NUM_UPPER_BOUND)
+Int(arc4random_uniform(6) + 1)						// Random 1...6

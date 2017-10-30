@@ -75,3 +75,18 @@ if let lookUp = userList1[4] {
 if let lookUp = userList1[5] {
 	print("User 5 is \(lookUp)")
 }
+//:### Nested Dictionary
+let shapesArray = ["Circle", "Square", "Triangle"]
+let colorsArray = ["Red", "Green", "Blue"]
+
+var elements:[String:[String]] = ["Shapes":shapesArray,"Colors":colorsArray]
+
+// Retrieve the last color element
+// This will crash if Colors returns nil
+let colors = Array(elements["Colors"]!)
+print(colors.last!)
+
+// This is safer and thus recommanded
+if let colors = elements["Colors"] {
+	print(colors[colors.count - 1])
+}
