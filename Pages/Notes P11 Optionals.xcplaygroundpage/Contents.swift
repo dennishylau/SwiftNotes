@@ -17,7 +17,6 @@ let futureBook = Book(name: "The Stranger", publicationYear: nil)
 
 var serverResponse:Int? = 404
 serverResponse = nil
-
 //:## Force Unwrapper
 // If not nil, safe to force unwrap with !
 // Will crash if unwrap variable with nil value
@@ -33,6 +32,15 @@ if let unwrappedConstant = futureBook.publicationYear {
 } else {
 	print("No publication year info.")
 }
+
+// Another use: attempting to convert e.g. String to Int
+let someInt = Int("3")				// someInt is of type Int?
+let anotherInt = Int("2.5")
+if let constant1 = someInt, let constant2 = anotherInt {
+	constant1 + constant2
+}
+
+
 //:## Failable Initialiser
 // A failable init is one that can return nil
 
@@ -108,3 +116,21 @@ class ViewController: UIViewController {
 // We know the UILabel is there, we know it will def have a value, but it does not when the VC is initialising
 // Thus label is an Implicitly Unwrapped Optional, we know it will def be there, but during the init it is treated like an optional
 // Only use this when need to init an object without supplying the value, but the object will be given a value very soon afterwards
+//:## Using With Collections
+var prices = ["Chips": 2.99, "Donuts": 1.89, "Juice": 3.99, "Apple": 0.50, "Banana": 0.25, "Broccoli": 0.99]
+var stock = ["Chips": 4, "Donuts": 0, "Juice": 12, "Apple": 6, "Banana": 6, "Broccoli": 3]
+
+func priceOfItem(item:String) -> Double? {
+	var price: Double?
+	if let itemStock = stock[item] {
+		if itemStock > 0 {
+			price = prices[item]
+		} else {
+			price = nil
+		}
+	}
+	return price
+}
+
+priceOfItem(item: "Chips")
+

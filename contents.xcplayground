@@ -15,5 +15,10 @@
         <page name='Notes P09 Loops'/>
         <page name='Notes P10 UIKit'/>
         <page name='Notes P11 Optionals'/>
+        <page name='Notes P12 Type Casting'/>
+        <page name='Notes P13 Guard'/>
+        <page name='Notes P14 Scope'/>
+        <page name='Notes P15 Enumerations'/>
+        <page name='Notes P16 Segues &amp; Nav Cont.'/>
     </pages>
 </playground>
