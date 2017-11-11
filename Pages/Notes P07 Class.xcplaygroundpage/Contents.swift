@@ -47,7 +47,7 @@ train1.makeNoise()
 class Car: Vehicle {
 	var gear = 1
 	override var description: String {
-		return super.description + "in gear \(gear)"	// use the super keyword for a superclass's property
+		return super.description + " in gear \(gear)"	// use the super keyword to refer to a superclass's property
 	}
 }
 

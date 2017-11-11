@@ -20,5 +20,7 @@
         <page name='Notes P14 Scope'/>
         <page name='Notes P15 Enumerations'/>
         <page name='Notes P16 Segues &amp; Nav Cont.'/>
+        <page name='Notes P17 Tab Bar'/>
+        <page name='Notes P18 VC Life Cycle'/>
     </pages>
 </playground>

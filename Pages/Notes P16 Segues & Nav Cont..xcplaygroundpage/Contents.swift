@@ -38,6 +38,34 @@ When a new VC slides in from the right edge of the screen, it is being pushed on
 When going back, the top view is popped from the stack to the right, and the next-highest VC is shown
 
 */
+//:## Pass Information
+//:### Segue Properties
+// Identifier: the name of the segue, set it segue > attribute inspector
+// Destination: the destination VC, which may require downcasting (as?) to access subclass properties
+
+// E.g.
+/*
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+segue.destination.navigationItem.title = textField.text
+}
+*/
+
+
+// This prepares the information that should be sent together with the segue during performSegue(withIdentifier: ,sender:)
+// No downcasting needed because every VC has the title property
+//:## Programmatic Manual Segue
+// CTRL drag from the top left button above the VC to the destination VC, select the presentation method
+// Select segue lines connecting the VCs and name them
+
+/* E.g.
+
+@IBAction func segueToYellow(_ sender: Any) {
+performSegue(withIdentifier: "Yellow", sender: nil)
+}
+
+This segue follows the segue line with identifier "Yellow"
+
+*/
 //:## Navigation Controller
 /*
 
@@ -63,33 +91,43 @@ Note that the Back Button attribute contains the back button text that *other* V
 //:### NavigationItem
 // For other VCs, drag a navigationItem object onto the VC to set its attributes, such as Title and Back Button text
 //:### Bar Button Item
-// Drag one on the left of right side of the navigation bar
-//:## Pass Information
-//:### Segue Properties
-// Identifier: the name of the segue, set it segue > attribute inspector
-// Destination: the destination VC, which may require downcasting (as?) to access subclass properties
-
-// E.g.
+// Drag one onto the left of right side of the navigation bar
+//:## Example From Lab
 /*
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		segue.destination.navigationItem.title = textField.text
+class ViewController: UIViewController {
+
+	@IBOutlet weak var username: UITextField!
+	@IBOutlet weak var forgotUsernameButton: UIButton!
+	@IBOutlet weak var forgotPasswordButton: UIButton!
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {		This prepares the info to be passed in segue
+
+		guard let sender = sender as? UIButton else { return }
+
+		if sender == forgotUsernameButton {
+			segue.destination.navigationItem.title = "Forgot Username"
+		} else if sender == forgotPasswordButton {
+			segue.destination.navigationItem.title = "Forgot Password"
+		} else {
+			segue.destination.navigationItem.title = username.text
+		}
 	}
-*/
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+	}
 
-// This works if there is only one segue in the UIVC, sets the value of the destination VC
-// No downcasting needed because every VC has the title property
-//:## Programmatic Manual Segue
-// CTRL drag from the top left button above the VC to the destination VC, select the presentation method
-// Select segue lines connecting the VCs and name them
+	@IBAction func forgotUsername(_ sender: Any) {							This actually performs the segue
+		performSegue(withIdentifier: "ForgottenUsernameOrPassword", sender: forgotUsernameButton)
+	}
 
-/* E.g.
+	@IBAction func forgotPassword(_ sender: Any) {
+		performSegue(withIdentifier: "ForgottenUsernameOrPassword", sender: forgotPasswordButton)
+	}
 
-@IBAction func segueToYellow(_ sender: Any) {
-	performSegue(withIdentifier: "Yellow", sender: nil)
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+	}
 }
-
-This segue follows the segue line with identifier "Yellow"
-
 */
 
