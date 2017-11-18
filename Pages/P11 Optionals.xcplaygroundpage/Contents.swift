@@ -133,4 +133,18 @@ func priceOfItem(item:String) -> Double? {
 }
 
 priceOfItem(item: "Chips")
+//:## Nil-Coalescing Operator (??)
+// means if != nil return value, if nil return ?? <value>
 
+let animalArray:[String] = ["dog","cat","dog","dog"]
+var countAnimal:[String: Int] = [:]
+for animal in animalArray {
+	countAnimal[animal] = (countAnimal[animal] ?? 0) + 1
+	//RHS = countAnimal[dog] if not nil, current value; if nil return 0 instead of nil
+}
+print(countAnimal)
+print(countAnimal["rabbit"] ?? "no rabbit")
+let sortedAnimal = countAnimal.sorted(by: { $0.1 > $1.1 })
+let topAnimal = countAnimal.sorted(by: { $0.1 > $1.1 }).first!.key
+print(sortedAnimal)
+print(topAnimal)

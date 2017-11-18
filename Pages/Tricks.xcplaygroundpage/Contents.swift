@@ -1,9 +1,16 @@
 import Foundation
 import UIKit
-//:## Diff viewDidLoad() v. viewWillAppear()
+//:## Framework V. Library
 /*:
->viewDidLoad: only called when the view is initialized\
-viewWillAppear: called every time the view is visible to the user
+>Library: You want soemthing done to your input, you call the library, bam job done\
+E.g. Swift Standard Library, round down Double to Int: Int(3.14) -> 3\
+Framework: The skeleton is there, you fill in the white space, the framework calls your input, bam job done\
+E.g. UIKit, viewDidLoad() will always be called, you put code into it to let the framework call it
+*/
+//:## Method Naming Convention
+/*:
+In swift 3, with a present tense verb like sort or reverse it is a mutating function (the original collection is modified), whereas if you have a past participle or gerund, like enumerated, appending or sorted then you are getting a copy.\
+In cases where this is ambiguous because the operation is already a noun, like union the mutating version is named with form: formUnion.
 */
 //:## LaunchScreen Status Bar Sytle
 /*:

@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='rendered'>
+<playground version='6.0' target-platform='ios' display-mode='raw'>
     <pages>
         <page name='Tricks'/>
         <page name='Intro Notes'/>
         <page name='Intro Examples'/>
-        <page name='Notes P01 Types'/>
-        <page name='Notes P02 Control Flow'/>
-        <page name='Notes P03 Storyboard'/>
-        <page name='Notes P04 Strings'/>
-        <page name='Notes P05 Functions'/>
-        <page name='Notes P06 Struct'/>
-        <page name='Notes P07 Class'/>
-        <page name='Notes P08 Collections'/>
-        <page name='Notes P09 Loops'/>
-        <page name='Notes P10 UIKit'/>
-        <page name='Notes P11 Optionals'/>
-        <page name='Notes P12 Type Casting'/>
-        <page name='Notes P13 Guard'/>
-        <page name='Notes P14 Scope'/>
-        <page name='Notes P15 Enumerations'/>
-        <page name='Notes P16 Segues &amp; Nav Cont.'/>
-        <page name='Notes P17 Tab Bar'/>
-        <page name='Notes P18 VC Life Cycle'/>
+        <page name='P01 Types'/>
+        <page name='P02 Control Flow'/>
+        <page name='P03 Storyboard'/>
+        <page name='P04 Strings'/>
+        <page name='P05 Functions'/>
+        <page name='P06 Struct'/>
+        <page name='P07 Class'/>
+        <page name='P08 Collections'/>
+        <page name='P09 Loops'/>
+        <page name='P10 UIKit'/>
+        <page name='P11 Optionals'/>
+        <page name='P12 Type Casting'/>
+        <page name='P13 Guard'/>
+        <page name='P14 Scope'/>
+        <page name='P15 Enumerations'/>
+        <page name='P16 Segues &amp; Nav Cont.'/>
+        <page name='P17 Tab Bar'/>
+        <page name='P18 VC Life Cycle'/>
+        <page name='P19 Building Workflows'/>
+        <page name='P20 Protocols'/>
     </pages>
 </playground>

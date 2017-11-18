@@ -43,7 +43,7 @@ case 20..<30:
 default:
     print("Just too many damn people!")                          // Default case
 }
-//:## Ternary Operator
+//:## Ternary Operator (?)
 var getBigNumber1: Int
 var getBigNumber2: Int
 let a = 20
@@ -54,3 +54,16 @@ if a > b {						// Using IF/ELSE
     getBigNumber1 = b
 }
 getBigNumber2 = a > b ? a : b    // Using Ternary
+//:## Nil-Coalescing Operator (??)
+
+// Basically a special kind of ternary for nil
+
+var returnC1: Int
+var returnC2: Int
+let c:Int? = 10
+let d = 10
+returnC1 = c != nil ? c! : d
+returnC2 = c ?? d
+
+// The two above are exactly the same
+// Return C if not nil, otherwise return D

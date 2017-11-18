@@ -60,3 +60,21 @@ swim1.save()
 swim2.save()
 print(SwimmingWorkout.freestyleWorkouts[0].stroke)
 print(SwimmingWorkout.butterflyWorkouts[0].stroke)
+//:## Raw Value & Type Property
+enum AnimalType: Character {
+	case dog = "🐶", cat = "🐱", fox = "🦊", tiger = "🐯"
+	
+	var definition: String {
+		switch self {
+		case .dog:
+			return "You like people, and you like Bones."
+		case .cat:
+			return "You are a lion in disguise but with a playful heart."
+		case .fox:
+			return "You are one cunning bastard."
+		case .tiger:
+			return "You are rutheless."
+		}
+	}
+}
+print(AnimalType.dog.rawValue)

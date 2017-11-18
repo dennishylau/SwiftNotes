@@ -33,12 +33,15 @@ nameSet1.removeAll()
 
 var nameSet2 = ["Joe"]
 nameSet1 + nameSet2
-
 //:### Nested Array
 let matrixR1 = [1,2,3]
 let matrixR2 = [4,5,6]
 let matrix = [matrixR1,matrixR2]
 matrix[1][2]
+//:### Map
+// Extract info from array using map method
+print("Print matrix each row index 2")
+print(matrix.map {$0[2]})
 //:## Dictionary
 // Dictionary is declared in sets of key:value pairs
 // The key must be unique
@@ -90,3 +93,16 @@ print(colors.last!)
 if let colors = elements["Colors"] {
 	print(colors[colors.count - 1])
 }
+//:## Counting & Sorting
+let animalArray:[String] = ["dog","cat","dog","dog","Parrot","Parrot"]
+var countAnimal:[String: Int] = [:]
+for animal in animalArray {
+	countAnimal[animal] = (countAnimal[animal] ?? 0) + 1
+	//RHS = countAnimal[dog] if not nil, current value; if nil return 0 instead of nil
+}
+print(countAnimal)
+print(countAnimal["rabbit"] ?? "no rabbit")
+let sortedAnimal = countAnimal.sorted(by: { $0.1 > $1.1 })
+let topAnimal = countAnimal.sorted(by: { $0.1 > $1.1 }).first!.key
+print(sortedAnimal)
+print(topAnimal)
