@@ -1,8 +1,30 @@
+import UIKit
+
 // Protocols are special types that define how other types should behave under specific method & property functionalities
 // https://www.skilled.io/u/gregheo/what-the-55-swift-standard-library-protocols-taught-me
+//:## Define New Protocols
 
+protocol FullName {
+	var fullName: String { get }		// Read-only (gettable) property, alt { get set }
+	// Cannot use let here, because the implementing class/struct have to set the value
+	// If { get set }, cannot use let, must use var
+	
+	func printFullName()				// Mandatory func
+}
+
+struct Person:FullName {
+	let firstName: String
+	let lastName: String
+	
+	var fullName: String {
+		return "\(firstName) \(lastName)"
+	}
+	
+	func printFullName() {
+		print(fullName)
+	}
+}
 //:## CustomStringConvertible
-
 // This protocol defines how something is supposed to be printed
 
 let string1: String = "Hello World"
@@ -88,3 +110,53 @@ let employee7 = EmployeeSortable(firstName: "Sang", lastName: "Han", jobTitle:"A
 let employee8 = EmployeeSortable(firstName: "Grant", lastName: "Phelps", jobTitle:"Senior Manager", phoneNumber: "415-555-7770")
 let employeeSortedArray = [employee4,employee5,employee6,employee7,employee8].sorted(by: <)
 print(employeeSortedArray.map {$0.lastName})
+//:## Delegate
+// Use delegate to pass information between objects
+// Both the Delegate property and the Implementor conform to the protocol
+/*:
+>Three Part Structure\
+1\. Protocol: defines functional requirements and conformance\
+2\. Source: source of information, also calls the method\
+3\. Implementor: defines the method code
+
+*/
+protocol HeartRateReceiverDelegate {												// Define conformance
+	func heartRateUpdated(to bpm:Int)
+}
+
+class HeartRateReceiver {															// Source class
+	var delegate: HeartRateReceiverDelegate?										// Define Delegate property
+	var currentHR: Int? {
+		didSet {
+			if let currentHR = currentHR {
+				print("DidSet heart rate \(currentHR).")
+				delegate?.heartRateUpdated(to: currentHR)						// Delegate calls method from Implementor
+			} else {
+				print("No heart rate data.")
+			}
+		}
+	}
+	
+	func startHeartRateMonitoringExample() {
+		for _ in 1...3 {
+			let randomHR = 60 + Int(arc4random_uniform(UInt32(15)))
+			currentHR = randomHR
+			Thread.sleep(forTimeInterval: 2)
+		}
+	}
+	// Generates random heart rate
+}
+
+class HeartRateViewController: UIViewController,HeartRateReceiverDelegate {			// Implementor class
+	var heartRateLabel: UILabel = UILabel()
+	
+	func heartRateUpdated(to bpm: Int) {
+		heartRateLabel.text = "\(bpm)"
+		print("VC current heart rate \(bpm).")
+	}
+}
+
+let heartRateReceiver1 = HeartRateReceiver()
+let heartRateVC1 = HeartRateViewController()
+heartRateReceiver1.delegate = heartRateVC1									// Assign Implementor instance to Delegate
+heartRateReceiver1.startHeartRateMonitoringExample()

@@ -118,13 +118,13 @@ var airCon1 = AirConTemp(temperature: 20)
 airCon1.temperature = 25
 airCon1.temperature = 27
 //: ## Type Properties & Method
-//Use type properties when the property is related to the type, but not a characteristic of an instance of the type
+// Use type properties when the property is related to the type, but not a characteristic of an instance of the type
 struct TemperatureS3 {
 	static var boilingPoint = 100
 }
 let boilingPoint = TemperatureS3.boilingPoint
 
-// Type method
+// Type method can be used to write code for the type in general instead of an instance, such as changing the value of a type property
 
 struct User {
 	var userName: String
