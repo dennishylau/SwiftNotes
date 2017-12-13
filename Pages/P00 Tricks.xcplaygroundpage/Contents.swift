@@ -1,3 +1,4 @@
+//:[Markup Guide](developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497-CH2-SW1)
 import Foundation
 import UIKit
 //:## Framework V. Library
@@ -153,6 +154,37 @@ class ZoomViewController: UIViewController, UIScrollViewDelegate {
 		scrollView.zoomScale = scale
 	}
 }
-
-
-
+//:## TableView IndexPath, Segue, and Peek & Pop
+/*:
+Normally, without peek and pop, this works:
+````
+guard let indexPath = tableView.indexPathForSelectedRow else { return }
+````
+But with pee and pop, use this:
+````
+let cell = sender as! UITableViewCell
+let indexPath = tableView.indexPath(for: cell)
+````
+*/
+//:## BarButton System Item & Dismiss Modal VC
+/*:
+````
+navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissVC))
+@objc func dismissVC() {
+	self.dismiss(animated: true, completion: nil)
+}
+````
+*/
+//:## TV Cell Auto Resize Fail
+// Set TV estimate height higher
+// Set Content Compression Resistance Priority to 1000
+//:## Tap To Dismiss Keyboard
+/*
+````
+@IBAction func closeKeyboard(_ sender: Any!) {
+	view.endEditing(true)
+}
+````
+Add Tap Gesture Recogniser to VC
+Set action
+*/

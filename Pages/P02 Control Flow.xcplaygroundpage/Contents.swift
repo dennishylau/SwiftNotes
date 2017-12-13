@@ -60,7 +60,7 @@ getBigNumber2 = a > b ? a : b    // Using Ternary
 
 var returnC1: Int
 var returnC2: Int
-let c:Int? = 10
+let c:Int? = 20
 let d = 10
 returnC1 = c != nil ? c! : d
 returnC2 = c ?? d

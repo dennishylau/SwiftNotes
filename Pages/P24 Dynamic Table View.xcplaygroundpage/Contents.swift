@@ -74,7 +74,7 @@ Introducing 2 of them
 1. accessoryButtonTappedForRowWith\
 2. didSelectRowAt
 */
-//:## Example
+//:## Example 1 (Plain, Edit, Reorder, Delete)
 class EmojiTableViewController: UITableViewController {
 	
 	// No need for manual IBOutlet for tableView property
@@ -210,5 +210,82 @@ class EmojiTableViewController: UITableViewController {
 			tableView.deleteRows(at: [indexPath], with: .fade)
 		}
 	}
+}
+//:## Example 2 (Grouped)
+class FoodTableViewController: UITableViewController {
+	
+	struct Meal {
+		var name: String
+		var food: [Food]
+	}
+
+	struct Food {
+		var name: String
+		var description: String
+	}
+	
+	var meals: [Meal] = [
+		Meal(name:"Breakfast", food: [
+			Food(name:"Scrambled Egg",description:"Egg and dairy"),
+			Food(name:"Frankfurter Wurst",description:"Pork"),
+			Food(name:"Milk",description:"Dairy")
+			]
+		),
+		Meal(name: "Lunch", food: [
+			Food(name: "Eel Rice", description: "Fish and carbohydrate"),
+			Food(name: "Salad", description: "Nuts"),
+			Food(name: "Cream Soup", description: "Dairy")
+			]
+		),
+		Meal(name: "Dinner", food: [
+			Food(name: "Toro Sushi", description: "Fist and carbohydrate"),
+			Food(name: "Yakitori", description: "Poutry"),
+			Food(name: "Ramen", description: "Carbohydrate")
+			]
+		)
+	]
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		// Uncomment the following line to preserve selection between presentations
+		// self.clearsSelectionOnViewWillAppear = false
+		
+		// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+		// self.navigationItem.rightBarButtonItem = self.editButtonItem
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+	
+	// MARK: - Table view data source
+	
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		return meals.count
+	}
+	
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		// section is a var of IndexPath, starts with 0
+		return meals[section].food.count
+	}
+	
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath)
+		
+		let meal = meals[indexPath.section]
+		let food = meal.food[indexPath.row]
+		
+		cell.textLabel?.text = food.name
+		cell.detailTextLabel?.text = food.description
+		
+		return cell
+	}
+	
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return meals[section].name
+	}
+	
 }
 

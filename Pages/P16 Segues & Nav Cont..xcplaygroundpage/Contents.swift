@@ -92,6 +92,26 @@ Note that the Back Button attribute contains the back button text that *other* V
 // For other VCs, drag a navigationItem object onto the VC to set its attributes, such as Title and Back Button text
 //:### Bar Button Item
 // Drag one onto the left of right side of the navigation bar
+
+//:## Designing Segues
+/*:
+```
+From OldPage to NewPage:
+1. Figure out the model object and all other related info needed to identify the object's index in a collection
+2. Set up var in NewPage for all said objects
+3. Prepare for segue. Set up control flow using if segue.identifier == "" {}
+4. Declare model objects
+5. Downcasting: let newPage = segue.destination as! NewPage
+6. Assign newPage.object = object
+```
+```
+Unwind to OldPage:
+1. On OldPage, @IBAction func unwindToOldPage(segue: UIStoryboardSegue)
+2. Set up control flow using if segue.identifier == "" {}
+3. Downcasting: let newPage = segue.source as! NewPage
+6. Connect something on NewPage to exit, select unwindToOldPage
+```
+*/
 //:## Example From Lab
 /*
 class ViewController: UIViewController {
