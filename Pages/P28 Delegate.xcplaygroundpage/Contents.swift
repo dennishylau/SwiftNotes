@@ -6,7 +6,7 @@ import UIKit
 // E.g.
 
 protocol SecondVCDelegate {
-	func passBackInfo(information: Int)
+	func passBackInfo(_ information: Int)
 }
 
 class MainVC: UIViewController, SecondVCDelegate {
@@ -20,7 +20,7 @@ class MainVC: UIViewController, SecondVCDelegate {
 		}
 	}
 	
-	func passBackInfo(information: Int) {
+	func passBackInfo(_ information: Int) {
 		self.information = information
 	}
 }
@@ -29,5 +29,8 @@ class SecondVC: UIViewController {
 	var information: Int?
 	var delegate: SecondVCDelegate?
 	
-//	delegate?.passBackInfo(information: <leModelObject!>)
+	func someFuncAfterHavingInfo() {
+		guard let information = information else {return}
+		delegate?.passBackInfo(information)
+	}
 }

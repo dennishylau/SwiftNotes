@@ -110,6 +110,23 @@ let employee7 = EmployeeSortable(firstName: "Sang", lastName: "Han", jobTitle:"A
 let employee8 = EmployeeSortable(firstName: "Grant", lastName: "Phelps", jobTitle:"Senior Manager", phoneNumber: "415-555-7770")
 let employeeSortedArray = [employee4,employee5,employee6,employee7,employee8].sorted(by: <)
 print(employeeSortedArray.map {$0.lastName})
+//:## Codable
+// Unlike NSCoding, the Codable protocol allows struct and enum besides class
+
+struct EmployeeCodable: Codable {
+	let firstName: String
+	let lastName: String
+	var jobTitle: String
+	var phoneNumber: String
+}
+let ben = EmployeeCodable(firstName: "Ben", lastName: "Atkins", jobTitle: "Font Desk", phoneNumber: "1234567")
+let jsonEncoder = JSONEncoder()
+// JSON is a list of key/value pairs for web use
+if let jsonData = try? jsonEncoder.encode(ben), let jsonString = String(data: jsonData, encoding: .utf8) {
+	print(jsonString)
+}
+// try? jsonEncoder.encode(ben) is a throwing function, meaning that it can return a specific type of error
+// try? allows the returning of an optional value, i.e nil for an error
 //:## Delegate
 // Use delegate to pass information between objects
 // Both the Delegate property and the Implementor conform to the protocol

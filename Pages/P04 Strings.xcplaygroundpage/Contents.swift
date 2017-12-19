@@ -27,15 +27,15 @@ string2.lowercased()
 string2.hasPrefix("H")
 string2.hasSuffix("LLO")
 string2.contains("ELL")		// contains method: Foundation NSString
-string2.characters.count	// count property on CharacterView collection
+string2.count	// count property on CharacterView collection
 string2.append("!")
-string2.characters.index(of: "L")	// For first occurance
-string2.characters.startIndex
-string2.characters.index(after: string2.characters.startIndex)
-let index1 = string2.characters.index(string2.characters.startIndex, offsetBy: 2)
-string2.characters.endIndex
+string2.index(of: "L")	// For first occurance
+string2.startIndex
+string2.index(after: string2.startIndex)
+let index1 = string2.index(string2.startIndex, offsetBy: 2)
+string2.endIndex
 string2[index1]
-string2.substring(from: index1)
-let index2 = string2.characters.index(string2.characters.startIndex, offsetBy: 4)
-string2.substring(with: index1..<index2)
+string2[index1...]
+let index2 = string2.index(string2.startIndex, offsetBy: 4)
+string2[index1..<index2]
 string2.removeSubrange(index1...index2)

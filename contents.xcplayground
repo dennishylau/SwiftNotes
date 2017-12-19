@@ -28,9 +28,11 @@
         <page name='P22 Model View Controller'/>
         <page name='P23 Scroll &amp; Zoom'/>
         <page name='P24 Dynamic Table View'/>
-        <page name='P25 Static Table View'/>
+        <page name='P25 Advanced Static Table View'/>
         <page name='P26 Persistence'/>
         <page name='P27 SystemVC'/>
         <page name='P28 Delegate'/>
+        <page name='P29 Keyboard &amp; Responder'/>
+        <page name='P30 Closure'/>
     </pages>
 </playground>

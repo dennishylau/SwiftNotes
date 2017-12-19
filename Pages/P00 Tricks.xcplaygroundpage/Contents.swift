@@ -1,4 +1,4 @@
-//:[Markup Guide](developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497-CH2-SW1)
+//:[Markup Guide](http://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497-CH2-SW1)
 import Foundation
 import UIKit
 //:## Framework V. Library
@@ -69,55 +69,6 @@ class ViewController: UIViewController {
 		self.tabBarItem.badgeValue = nil
 	}
 }
-//:## Fix Keyboard Covering Content
-class KeyboardFixedViewController: UIViewController {
-	
-	@IBOutlet weak var scrollView: UIScrollView!
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		registerForKeyboardNotifications()
-	}
-	
-	func registerForKeyboardNotifications() {
-		NotificationCenter.default.addObserver(self, selector:#selector(keyboardWasShown(_:)),name: .UIKeyboardDidShow, object: nil)
-		NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillBeHidden(_:)),name: .UIKeyboardWillHide, object: nil)
-		NotificationCenter.default.addObserver(self,selector:#selector(changeInputMode(_:)), name: .UITextInputCurrentInputModeDidChange, object: nil)
-		// Alt can use UIKeyboardWillChangeFrame instead of language change
-	}
-	
-	@objc func keyboardWasShown(_ notification: NSNotification) {
-		guard let keyboardFrameValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue
-			else { return }
-		
-		let keyboardFrame = keyboardFrameValue.cgRectValue
-		let keyboardSize = keyboardFrame.size
-		
-		let contentInsets = UIEdgeInsetsMake(0.0, 0.0,keyboardSize.height, 0.0)
-		scrollView.contentInset = contentInsets
-		scrollView.scrollIndicatorInsets = contentInsets
-	}
-	
-	@objc func keyboardWillBeHidden(_ notification: NSNotification) {
-		let contentInsets = UIEdgeInsets.zero
-		scrollView.contentInset = contentInsets
-		scrollView.scrollIndicatorInsets = contentInsets
-	}
-	
-	@objc func changeInputMode(_ notification: NSNotification) {
-		print("Language changed.")
-		guard let keyboardFrameValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue
-			else { return }
-		
-		let keyboardFrame = keyboardFrameValue.cgRectValue
-		let keyboardSize = keyboardFrame.size
-		
-		let contentInsets = UIEdgeInsetsMake(0.0, 0.0,keyboardSize.height, 0.0)
-		scrollView.contentInset = contentInsets
-		scrollView.scrollIndicatorInsets = contentInsets
-	}
-	
-}
 //:## Enable Zooming & Scrolling
 class ZoomViewController: UIViewController, UIScrollViewDelegate {
 	
@@ -169,7 +120,15 @@ let indexPath = tableView.indexPath(for: cell)
 //:## BarButton System Item & Dismiss Modal VC
 /*:
 ````
-navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissVC))
+overrider func viewDidLoad() {
+	super.viewDidLoad()
+	if let modelObject = modelObject {
+	// Do something
+	} else {
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissVC))
+	}
+}
+
 @objc func dismissVC() {
 	self.dismiss(animated: true, completion: nil)
 }
@@ -178,13 +137,17 @@ navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
 //:## TV Cell Auto Resize Fail
 // Set TV estimate height higher
 // Set Content Compression Resistance Priority to 1000
-//:## Tap To Dismiss Keyboard
-/*
+
+//:## Debug Auto Layout Using LLDB
+/*:
 ````
-@IBAction func closeKeyboard(_ sender: Any!) {
-	view.endEditing(true)
-}
+Add symbolic breakpoint:
+symbol: UIViewAlertForUnsatisfiableConstraints
+action: debugger command
+command: expr -l objc++ -O -- [[UIWindow keyWindow] _autolayoutTrace]
+
+In LLDB console:
+expr -l Swift -- import UIKit
+expr -l Swift -- unsafeBitCast(0x7f88a8cc2050, to: UIView.self).backgroundColor = UIColor.red
 ````
-Add Tap Gesture Recogniser to VC
-Set action
 */
