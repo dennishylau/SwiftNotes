@@ -151,3 +151,10 @@ expr -l Swift -- import UIKit
 expr -l Swift -- unsafeBitCast(0x7f88a8cc2050, to: UIView.self).backgroundColor = UIColor.red
 ````
 */
+//:## Create Infinite Loop
+let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (_) in
+	// Block of code here
+}
+timer.invalidate()
+
+

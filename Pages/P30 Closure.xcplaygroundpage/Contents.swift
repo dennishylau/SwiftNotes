@@ -124,7 +124,7 @@ func performAction(url: String, response: (_ code: Int) -> Void) {
 	response(4)
 }
 
-// Using the trailing closure syntax, we can declare another name e.g. called data that refers to code:, NOT response(code:)
+// Using the trailing closure syntax, we can declare another name e.g. called number that refers to the value of code:, NOT response(code:)
 performAction(url: "Hello World") { (number) in
 	print("Hi!")
 	print(number * 4)
